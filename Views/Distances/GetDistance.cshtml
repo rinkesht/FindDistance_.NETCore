@@ -1,0 +1,55 @@
+﻿@model FindMyDistance.Models.GetDistance
+
+@{
+    ViewData["Title"] = "GetDistance";
+}
+
+<h2>Get Distance</h2>
+
+<h4>Distance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GetDistance">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>Start Position: </div>
+            <div class="form-group">
+                <label asp-for="StartLattitude" class="control-label"></label>
+                <input asp-for="StartLattitude" class="form-control" />
+                <span asp-validation-for="StartLattitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartLongitude" class="control-label"></label>
+                <input asp-for="StartLongitude" class="form-control" />
+                <span asp-validation-for="StartLongitude" class="text-danger"></span>
+            </div>
+            <div>End Position: </div>
+            <div class="form-group">
+                <label asp-for="EndLattitude" class="control-label"></label>
+                <input asp-for="EndLattitude" class="form-control" />
+                <span asp-validation-for="EndLattitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndLongitude" class="control-label"></label>
+                <input asp-for="EndLongitude" class="form-control" />
+                <span asp-validation-for="EndLongitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="GetDistance" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+       The difference between these two locations is @Html.DisplayFor(modelItem => modelItem.DistanceBetween)
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
